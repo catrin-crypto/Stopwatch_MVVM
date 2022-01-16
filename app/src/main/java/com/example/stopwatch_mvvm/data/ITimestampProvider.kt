@@ -1,5 +1,5 @@
 package com.example.stopwatch_mvvm.data
 
-interface TimestampProvider {
+interface ITimestampProvider {
     fun getMilliseconds(): Long
 }

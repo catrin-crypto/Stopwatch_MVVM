@@ -1,13 +1,16 @@
 package com.example.stopwatch_mvvm.view.viewmodel
 
+
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+const val DEFAULT_TIME = "00:00:000"
+
 class MainActivityViewModel(
-    private val stopwatchStateHolder: StopwatchStateHolder,
-    private val scope: CoroutineScope
+    private val stopwatchStateHolder: IStopwatchStateHolder,
+    private val scope: ViewModelScope
 ) : ViewModel() {
 
     private var job: Job? = null
@@ -45,7 +48,7 @@ class MainActivityViewModel(
     }
 
     private fun clearValue() {
-        mutableTicker.value = "00:00:000"
+        mutableTicker.value = DEFAULT_TIME
     }
 
 }

@@ -1,14 +1,14 @@
 package com.example.stopwatch_mvvm.view.viewmodel
 
 import com.example.stopwatch_mvvm.data.StopwatchState
-import com.example.stopwatch_mvvm.data.TimestampProvider
+import com.example.stopwatch_mvvm.data.ITimestampProvider
 
 class ElapsedTimeCalculator(
-    private val timestampProvider: TimestampProvider,
-) {
+    private val ITimestampProvider: ITimestampProvider,
+) : IElapsedTimeCalculator {
 
-    fun calculate(state: StopwatchState.Running): Long {
-        val currentTimestamp = timestampProvider.getMilliseconds()
+    override fun calculate(state: StopwatchState.Running): Long {
+        val currentTimestamp = ITimestampProvider.getMilliseconds()
         val timePassedSinceStart = if (currentTimestamp > state.startTime) {
             currentTimestamp - state.startTime
         } else {

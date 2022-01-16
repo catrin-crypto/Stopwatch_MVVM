@@ -1,8 +1,8 @@
-package com.example.stopwatch_mvvm.view
+package com.example.stopwatch_mvvm.view.viewmodel
 
-class TimestampMillisecondsFormatter {
+class TimestampMillisecondsFormatter : ITimestampMillisecondsFormatter {
 
-    fun format(timestamp: Long): String {
+    override fun format(timestamp: Long): String {
         val millisecondsFormatted = (timestamp % 1000).pad(3)
         val seconds = timestamp / 1000
         val secondsFormatted = (seconds % 60).pad(2)
@@ -17,6 +17,6 @@ class TimestampMillisecondsFormatter {
         }
     }
 
-    private fun Long.pad(desiredLength: Int) = this.toString().padStart(desiredLength, '0')
+    override fun Long.pad(desiredLength: Int) = this.toString().padStart(desiredLength, '0')
 
 }
